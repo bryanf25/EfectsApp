@@ -15,3 +15,8 @@ export const loadUserError = createAction(
     '[User] Load User Error',
     props<{ payload: any }>()
 );
+                                                                                 
+export const updateUser = createAction(
+    '[User] update User',
+    props<{ user: User }>()
+);

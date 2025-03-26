@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { loadUser, loadUserError, loadUserSuccess } from '../actions';
+import { loadUser, loadUserError, loadUserSuccess, updateUser } from '../actions';
 import { User } from '../../models/user.model';
 
 export interface UserState {
@@ -27,6 +27,10 @@ export const _userReducer = createReducer(userinitialState,
         loaded: true,
         user: {...user}
     })),
+    on(updateUser, (state, { user }) => ({
+        ...state,
+        user: {...user}
+    })),
     on(loadUserError, (state, { payload }) => ({
         ...state,
         loading: false,
@@ -36,5 +40,5 @@ export const _userReducer = createReducer(userinitialState,
             name: payload.name,
             message: payload.message
         }
-    }))
+    })),
 );

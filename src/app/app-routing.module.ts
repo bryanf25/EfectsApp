@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListComponent } from './users/list/list.component';
 import { UserComponent } from './users/user/user.component';
+import { preventLeaveGuard } from './guards/prevent-leave.guard';
 
 const routes: Routes = [
   {
@@ -10,7 +11,8 @@ const routes: Routes = [
   },
   {
     path: 'user/:id',
-    component: UserComponent
+    component: UserComponent,
+    canDeactivate: [preventLeaveGuard]
   },
   {
     path: '**',
